@@ -1,5 +1,7 @@
 # ConsoleMVC-SangminHan-24070448
 
+> **[POC Stage]** 현재 개념 검증(Proof of Concept) 단계입니다. 구현 코드는 포함되지 않습니다.
+
 ## POC: MVC 스켈레톤 코드
 
 반도체 시료 생산주문관리 시스템의 MVC 아키텍처 검증을 위한 PoC 레포지토리입니다.

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ctime>
 
 void ConsoleView::showSeparator(char c, int width) {
     std::cout << std::string(width, c) << "\n";
@@ -9,8 +10,15 @@ void ConsoleView::showSeparator(char c, int width) {
 
 void ConsoleView::showMainMenu(int sampleCount, int totalStock,
                                 int orderCount, int producingCount) {
+    time_t now = time(nullptr);
+    struct tm t {};
+    localtime_s(&t, &now);
+    char dtbuf[32];
+    strftime(dtbuf, sizeof(dtbuf), "%Y-%m-%d %H:%M:%S", &t);
+
     showSeparator();
     std::cout << "   반도체 시료 생산주문관리 시스템\n";
+    std::cout << "   " << dtbuf << "\n";
     showSeparator();
     std::cout << "  등록 시료  : " << sampleCount << "종"
               << "   총 재고 : " << totalStock << " ea\n"
@@ -49,14 +57,17 @@ void ConsoleView::showSamples(const std::vector<Sample>& samples) {
 void ConsoleView::showOrders(const std::vector<Order>& orders) {
     showSeparator('-');
     std::cout << std::left
+              << std::setw(6)  << "번호"
               << std::setw(22) << "주문번호"
               << std::setw(8)  << "시료ID"
               << std::setw(16) << "고객명"
               << std::setw(8)  << "수량"
               << "상태\n";
     showSeparator('-');
-    for (const auto& o : orders) {
+    for (int i = 0; i < (int)orders.size(); i++) {
+        const auto& o = orders[i];
         std::cout << std::left
+                  << std::setw(6)  << ("[" + std::to_string(i + 1) + "]")
                   << std::setw(22) << o.orderId
                   << std::setw(8)  << o.sampleId
                   << std::setw(16) << o.customerName

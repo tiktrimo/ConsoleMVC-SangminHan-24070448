@@ -28,6 +28,23 @@ ConsoleMVC-SangminHan-24070448/
   ConsoleMVC.sln
 ```
 
+## 빌드 및 실행 결과
+
+```
+[시료 목록]
+S-001 실리콘 웨이퍼-8인치  0.5min  0.92  100ea
+S-002 GaN 에피택셜-4인치   0.3min  0.78   50ea
+S-003 SiC 파워기판-6인치   0.8min  0.92   30ea
+
+[승인/거절 처리 후 상태]
+ORD-20260612-0001  S-001  삼성전자 파운드리  30ea   CONFIRMED  (재고 충분)
+ORD-20260612-0002  S-003  LG이노텍          200ea  PRODUCING  (재고 부족)
+ORD-20260612-0003  S-002  SK하이닉스         20ea  REJECTED
+```
+
+- Build: MSBuild Debug|x64 — 에러/경고 없음
+- MVC 역할 분리 검증 완료
+
 ## 역할 정의
 
 | 레이어 | 역할 |
